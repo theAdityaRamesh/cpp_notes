@@ -93,3 +93,21 @@ local global6
 global global2
 ```
 - Global variables are available throughout the lifetime of the programme. They can be accessed from anywhere in the program.
+  
+
+## C++ Storage Classes
+
+GFG Link : https://www.geeksforgeeks.org/storage-classes-in-c-with-examples
+
+#### Key Takeaways
+
+- **auto** storage class is the default storage class in cpp for all variables defined inside a block.
+  - Scope : Local
+  - Default Value : Garbage
+  - Memory Location : RAM
+  - Lifetime : Destroyed at end of scope.
+- **extern** storage class is used to share variables between code-blocks/files.
+  - Scope : Global
+  - Default Value : 0
+  - Memory Location : RAM
+  - Lifetime : End of Programme.
