@@ -111,3 +111,109 @@ GFG Link : https://www.geeksforgeeks.org/storage-classes-in-c-with-examples
   - Default Value : 0
   - Memory Location : RAM
   - Lifetime : End of Programme.
+  - Functions are by default extern storage classes. A function defined in any file can be used in any other file provided there is a declaration for that function.
+  
+  ```cpp
+
+  file 1: main.cpp
+
+  #include<iostream>
+  #include "library.h"
+
+  int main(){
+    number = 5;
+    print();
+    add_one();
+    print();
+  }
+
+  --------------------
+  5
+  6
+
+
+  file 2: library.h
+  
+  extern int number;
+  void add_one();
+  void print();
+
+  file 3 : library.c
+
+  # include<stdio.h>
+
+  int number = 0;
+
+  void add_one(){
+    number++;
+  }
+
+  void print(){
+    printf("%d",number);
+  }
+
+  ```
+
+- **static** storage class allows the variable to preserve its value till the end of the programme. It stores the last used value. It does not get destroyed across function calls.
+  - Scope: Local
+  - Default Value: 0
+  - Memory Location : RAM
+  - Lifetime : Till end of programme
+
+```
+
+void fun(){
+  static int var = 0;
+  var++;
+  cout << var;
+}
+
+int main(){
+  fun();
+  fun();
+
+  return 0;
+}
+
+-------------
+1
+2
+
+```
+
+- **register** storage class stores the variable value in a CPU register it its available else its stored in memory;
+- It has the same functionality as the auto storage class.
+  - Scope : Local
+  - Default Value: Garbage
+  - Memory Location : Register if available
+  - Lifetime : End of scope
+- **mutable** storage class allows changing variables inspite of a const pointer.
+  - It can only be applied to member variables of a class or struct.
+
+```c++
+
+class Test {
+  public:
+    int var1;
+    mutable int var2;
+
+    Test(){
+      var1 = 0;
+      var2 = 1;
+    }
+}
+
+int main(){
+  const Test t;
+  cout << t.var2;
+  t.var2 = 5;
+  cout << t.var2
+  return 0;
+}
+
+---------------
+1
+5
+
+```
+
