@@ -180,6 +180,17 @@ int main(){
 2
 
 ```
+- **static** variables can be used in a class as class variables or as static functions.
+  - These static class variables cannot be initialized inside the constructor.
+  - They need to be done using the scope resolution operator and the class name.
+    - ```class_name::static_variable_name```
+  - class objects can also be static. 
+  - classes can have static functions which can only access static class member variables. These functions need to be accessed using the class name and scope resolution operator.
+    - ```class_name::static_function_name(args)```
+
+
+
+
 
 - **register** storage class stores the variable value in a CPU register it its available else its stored in memory;
 - It has the same functionality as the auto storage class.
@@ -187,7 +198,7 @@ int main(){
   - Default Value: Garbage
   - Memory Location : Register if available
   - Lifetime : End of scope
-- **mutable** storage class allows changing variables inspite of a const pointer.
+- **mutable** storage class allows changing variables in spite of a const pointer.
   - It can only be applied to member variables of a class or struct.
 
 ```c++
@@ -216,4 +227,3 @@ int main(){
 5
 
 ```
-
