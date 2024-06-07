@@ -227,3 +227,174 @@ int main(){
 5
 
 ```
+
+## C++ Data Types
+
+![alt text](image-1.png)
+
+### Key Takeaways
+- 3 types of data-types
+  - primary/built-in
+  - derived
+  - user defined.
+- Each datatype has a range of values it can take and a fixed size in bytes which is found using ``sizeof()``
+- The size can be changed by using datatype modifiers as prefix.
+
+
+![alt text](image-2.png)
+
+- In order to find the min and max values of the data-types we can use macro constants such as ```INT_MIN, INT_MAX, CHAR_MIN, ULONG_MAX``` etc.
+
+
+## C++ Literals
+
+GFG Link : https://www.geeksforgeeks.org/literals-in-c-cpp-with-examples/?ref=lbp
+
+### Key Takeaways
+- Literals are constant values that are stored in variables.
+- For different kinds of variables different literals need to be used.
+  - Integer Literal: ```1, 2, 3, 4```
+  - Floating Point Literal : ```1.0, 0.2, 3.4, 4.36```
+  - Character Literal : ```A, a, f, G, ^, &```
+  - String Literal : ```"c++"```
+  
+#### Specifying Integer Literals
+
+- Integer Literals can be specified in different bases.
+  - ```0X1F5 or 0x1A5``` represents hexadecimal or base 16
+  - No suffix ```145``` is base 10
+  - ```0145``` is base 8 or octal
+  - ```0b1001 or 0B100``` is base 2 or binary.
+-  Integer Literals can be specified for different datatype modifiers.
+   -  ```1234l or 1234L``` is long
+   -  ```124u or 124U``` is unsigned 
+   -  ```126ul or 126UL``` is unsigned long int
+   -  ```ll or LL``` represents long long
+   -  ```ull or ULL``` is for unsigned long long
+-  
+
+## Derived Datatypes in C++
+
+GFG Link : https://www.geeksforgeeks.org/derived-data-types-in-c/?ref=lbp
+
+### Key Takeaways
+- There are 5 user derived datatypes. 
+  - class
+  - struct
+  - typedef
+  - enum
+  - union
+
+- **class** holds variables and functions.
+- **struct** holds variables of different datatypes.
+
+```c++
+struct structName{
+  int var1;
+  char var2;
+  float var3;
+};
+
+int main(){
+  structName t;
+  t.var1 = 1;
+  t.var2 = 'a';
+  t.var3 = 0.5;
+}
+```
+
+- **Union** is a derived datatype where the variables defined inside share the same memory location.
+
+```c++
+
+#include<iostream>
+
+union union_name{
+  int var1;
+  int var2;
+  float var3;
+  char var4;
+};
+
+int main(){
+  union union_name test;
+  test.var1 = 97;
+  cout << test.var1 << endl;
+  cout << test.var2 << endl;
+  cout << test.var3 << endl;
+  cout << test.var4 << endl;
+  
+  return 0;
+}
+
+------------------------------
+
+97 // var1
+97 // var2 is int with same memory
+1.35926e-43 // 97 in binary is typecasted to float
+a // 97 in binary is typecasted to char
+
+
+```
+
+- **enum** is used to assign integer values to constants. The integer values can be specified or they start from 0.
+
+```c++
+#include<iostream>
+
+enum alphabets{
+  A=1,
+  B=2,  
+  a=27,
+  b=28  
+}; // custom integer values
+
+enum weekday{
+    Mon,
+    Tue,
+    Wed,
+    Thu,
+    Fri,
+    Sat,
+    Sun        
+}; // unspecified integer values
+
+
+
+int main(){
+  enum alphabets character;
+  character = A;
+  cout << character << endl; 
+  character = b;
+  cout << character<< endl; 
+    
+  enum weekday day;
+  day = Mon;
+  cout << day << endl;    
+  return 0;
+}
+
+```
+
+- **typedef** allows us to define custom datatypes. It allots a new name for the existing types.
+  - we can for example use typedef to define a new string class with our custom functions.
+
+
+```c++
+#include <iostream> 
+using namespace std; 
+
+// After this line BYTE can be used 
+// in place of unsigned char 
+typedef unsigned char BYTE; 
+  
+int main() 
+{ 
+    BYTE b1, b2; 
+    b1 = 'c'; 
+    cout << " " << b1; 
+    return 0; 
+}
+
+
+```
